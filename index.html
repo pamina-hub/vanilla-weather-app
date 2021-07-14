@@ -10,13 +10,95 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+    <script
+      src="https://kit.fontawesome.com/fd9b1bc898.js"
+      crossorigin="anonymous"
+    ></script>
+     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
     <title>weather app</title>
   </head>
   <body>
     <div class="container">
-      <h1>hello world</h1>
-      <a href="" class="btn btn-primary">Click me</a>
+      <div class="wrapper">
+        <div class="box z">
+          <strong>WEATHER FORECAST</strong>
+        </div>
+        <div class="box a">
+          <strong> LOCATIONS </strong>
+          <ul class="cities">
+            <li>
+              <a href="" id="newyork">New York</a>
+            </li>
+            <li>
+              <a href="" id="milano">Milano</a>
+            </li>
+            <li>
+              <a href="" id="seoul">Seoul</a>
+            </li>
+            <li>
+              <a href="" id="tokyo">Tokyo</a>
+            </li>
+            <li>
+              <a href="" id="paris">Paris</a>
+            </li>
+          </ul>
+          <button type="button" class="btn btn-light" id="currentLocationButton"> Current Location </button>
+        </div>
+        <div class="box x">
+         
+        </div>
+        <div class="box b">
+          <form id="search-location">
+          <input
+            class="box2 form-control"
+            id="search-location-input"
+            type="text"
+            placeholder="Search location..."
+            autocomplete="off"
+            autofocus="on"
+          >
+          <input type="submit" class="btn btn-light" value="Search" id="searchButton">
+          </form>
+          </form>
+        </div>
+        <div class="box c">
+          <div class="row row-cols-2">
+            <div class="col md-6">
+              <div class="city">Seoul
+              </div>
+              <div class="date">13.07.21
+              </div>
+              <div class="currentTemperature">
+                <span class="temperature">22°</span>
+                <span class="units">
+              <a href="#" id="celsiusLink" class="active">°C</a>
+              |
+              <a href="#" id="fahrenheitLink" class="active">°F</a>
+                </span>
+              </div>
+            </div>
+            <div class="col md-6">
+              <i class="fas fa-cloud weatherIcon"></i>
+            </div>
+          </div>
+        </div>
+        <div class="box d details">
+          <ul class=weatherDetails>
+            <li id="description"></li>
+            <li>Humidity: <span id="humidity"></span>%</li>
+            <li>Wind: <span id="wind"></span>m/sec</li>
+          </ul>
+        </div>
+        <div class="box e">
+          <div class="row row-cols-5" id="forecast">
+          </div>
+        </div>
+        <small><a href="https://github.com/pamina-hub/vanilla-weather-app" target="_blank">Open-source code</a> by Pamina</small>
+      </div>
     </div>
     <script src="src/app.js"></script>
   </body>
