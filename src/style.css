@@ -1,7 +1,17 @@
 body {
   margin: 40px;
 }
-
+.weatherIcon {
+  display: block;
+  margin: 40px 0 0;
+  font-size: 40px;
+  line-height: 50px;
+  color: #fdf4e7;
+  font-size: 160px;
+  text-align: center;
+  vertical-align: bottom;
+  padding: 20px 0px;
+}
 .weatherDetails {
   padding: 0;
   margin: 0;
@@ -153,6 +163,11 @@ small {
   padding: 4px 6px;
   display: inline-block;
 }
+#searchButton:hover {
+  background-color: #fdf4e7;
+  color: #5e63b5;
+  cursor: pointer;
+}
 #currentLocationButton {
   font-size: 18px;
   text-align: center;
@@ -180,13 +195,6 @@ small {
   position: relative;
   top: -10px;
   left: 5px;
-}
-
-#forecast img {
-  display: block;
-  margin: 0 auto;
-  height: 50px;
-  width: 50px;
 }
 
 #newyork {
