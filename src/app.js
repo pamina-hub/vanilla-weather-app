@@ -56,7 +56,51 @@ function showTemperature(response) {
   document.querySelector("#description").innerHTML =
     response.data.weather[0].main;
 }
-///city options
+
+function search(city) {
+  let apiKey = "2c4a14026882da503eb13e803b24b4dd";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemperature);
+}
+
+function searchLocation(event) {
+  event.preventDefault();
+  let city = document.querySelector("#search-location-input").value;
+  search(city);
+}
+let searchForm = document.querySelector("#search-location");
+searchForm.addEventListener("submit", searchLocation);
+
+function showPosition(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let apiKey = "2c4a14026882da503eb13e803b24b4dd";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemperature);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function displayCelciusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector(".temperature");
+  temperatureElement.innerHTML = celsiusTemperature;
+  celsiusLinkElement.classList.add("active");
+  fahrenheitLinkElement.classList.remove("active");
+}
+
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector(".temperature");
+  temperatureElement.innerHTML = Math.round((celsiusTemperature * 9) / 5 + 32);
+  celsiusLinkElement.classList.remove("active");
+  fahrenheitLinkElement.classList.add("active");
+}
+function getCurrentPosition() {
+  navigator.geolocation.getCurrentPosition(showPosition);
+}
+
 function displayParis(event) {
   event.preventDefault();
   let apiKey = "2c4a14026882da503eb13e803b24b4dd";
@@ -66,5 +110,67 @@ function displayParis(event) {
   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=Paris&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
+function displayNewyork(event) {
+  event.preventDefault();
+  let apiKey = "2c4a14026882da503eb13e803b24b4dd";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?id=${5128581}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemperature);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?id=${5128581}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function displayMilano(event) {
+  event.preventDefault();
+  let apiKey = "2c4a14026882da503eb13e803b24b4dd";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Milan&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemperature);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=Milan&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function displaySeoul(event) {
+  event.preventDefault();
+  let apiKey = "2c4a14026882da503eb13e803b24b4dd";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Seoul&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemperature);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=Seoul&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function displayTokyo(event) {
+  event.preventDefault();
+  let apiKey = "2c4a14026882da503eb13e803b24b4dd";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Tokyo&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemperature);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=Tokyo&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
 let parisElement = document.querySelector("#paris");
 parisElement.addEventListener("click", displayParis);
+let newyorkElement = document.querySelector("#newyork");
+newyorkElement.addEventListener("click", displayNewyork);
+
+let milanElement = document.querySelector("#milano");
+milanElement.addEventListener("click", displayMilano);
+
+let seoulElement = document.querySelector("#seoul");
+seoulElement.addEventListener("click", displaySeoul);
+
+let tokyoElement = document.querySelector("#tokyo");
+tokyoElement.addEventListener("click", displayTokyo);
+let toCurrentLocation = document.querySelector("#currentLocationButton");
+toCurrentLocation.addEventListener("click", getCurrentPosition);
+
+let celsiusLinkElement = document.querySelector("#celsiusLink");
+celsiusLinkElement.addEventListener("click", displayCelciusTemperature);
+
+let fahrenheitLinkElement = document.querySelector("#fahrenheitLink");
+fahrenheitLinkElement.addEventListener("click", displayFahrenheitTemperature);
+
+let celsiusTemperature = null;
+
+search("London");
