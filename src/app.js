@@ -17,3 +17,23 @@ function retrievePosition(position) {
 navigator.geolocation.getCurrentPosition(retrievePosition);
 let currentButton = document.querySelector("#currentLocationButton");
 currentButton.addEventListener("click", retrievePosition);
+///city search
+function search(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#search-location-input");
+  let h5 = document.querySelector("#current-city");
+  let units = "metric";
+  let apiKey = "2c4a14026882da503eb13e803b24b4dd";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=${units}`;
+  if (cityInput.value) {
+    h5.innerHTML = `${cityInput.value}`;
+  }
+  axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemp);
+}
+function showTemp(response) {
+  let temperature = Math.round(response.data.main.temp);
+  let newTemp = document.querySelector(".temperature");
+  newTemp.innerHTML = `${temperature}`;
+}
+let form = document.querySelector("#searchButton");
+form.addEventListener("click", search);
