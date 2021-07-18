@@ -19,6 +19,8 @@
     ></script>
      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <title>weather app</title>
   </head>
   <body>
@@ -68,9 +70,9 @@
         <div class="box c">
           <div class="row row-cols-2">
             <div class="col md-6">
-              <div class="city">Seoul
+              <div class="city" id="current-city">Seoul
               </div>
-              <div class="date">Thursday 13th May - 9:30pm 
+              <div class="date" id="current-date">Thursday 13th May - 9:30pm 
               </div>
               <div class="currentTemperature">
                 <span class="temperature">22°</span>
