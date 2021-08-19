@@ -187,16 +187,14 @@ small {
   color: #5e63b5;
   cursor: pointer;
 }
-
 #currentEmoji {
-  background-size: 150px;
-  width: 150px;
-  height: 150px;
+  background-size: 250px;
+  width: 250px;
+  height: 250px;
   position: relative;
   top: -10px;
   left: 5px;
 }
-
 #newyork {
   color: inherit;
   text-decoration: none;
